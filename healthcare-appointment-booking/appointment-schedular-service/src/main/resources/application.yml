@@ -1,0 +1,15 @@
+server:
+  port: 9091
+  
+spring:
+  application:
+    name: Appointment-Schedular-Service
+
+eureka:
+  instance:
+    prefer-ip-address:  true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8080/eureka

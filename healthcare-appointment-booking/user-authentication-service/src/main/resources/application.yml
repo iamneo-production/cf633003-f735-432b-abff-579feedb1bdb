@@ -1,0 +1,13 @@
+server:
+  port: 9093
+  
+spring:
+  application:
+    name: User-Authentication-Service
+
+eureka:
+  instance:
+    prefer-ip-address:  true
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
