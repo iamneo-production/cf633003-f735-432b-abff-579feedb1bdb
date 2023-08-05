@@ -4,6 +4,14 @@ server:
 spring:
   application:
     name: Communication-Service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/healthcare_appointment_booking
+    username: root
+    password: examly
+  jpa:
+    hibernate:
+      ddl-auto: update
 
 eureka:
   instance:
