@@ -1,9 +1,19 @@
 server:
   port: 9095
-  
+
 spring:
   application:
     name: Payment-Service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/healthcare_appointment_booking
+    username: root
+    password: examly
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
 
 eureka:
   instance:
@@ -11,3 +21,4 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8080/eureka
+
