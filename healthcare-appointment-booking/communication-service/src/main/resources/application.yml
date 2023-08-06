@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/healthcare_appointment_booking
     username: root
-    password: ganesh123
+    password: system
   jpa:
     hibernate:
       ddl-auto: update
@@ -19,3 +19,17 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8080/eureka
+  
+resilience4j:
+  circuitbreaker:
+    instances:
+      getAppointmentStatus:
+        register-health-indicator: true
+        event-consumer-buffer-size: 10
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 6s
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        sliding-window-type: count-based

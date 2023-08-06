@@ -60,7 +60,7 @@ public class AppointmmentStatusService {
                 return appointmentStatus.get();
             }
             else {
-				throw new DataNotFoundException("PatiId & ProviderId is Invalid");
+				throw new DataNotFoundException("PatientiId & ProviderId is Invalid");
 			}
         }
 		throw new DataNotFoundException("PatientId & ProviderId is Invalid");
