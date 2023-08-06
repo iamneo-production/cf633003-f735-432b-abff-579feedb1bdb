@@ -41,17 +41,12 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> getToken(@RequestBody AuthRequest authRequest) {
-        log.info("in login a");
+    public ResponseEntity<String> getToken(@RequestBody AuthRequest authRequest) {
 
-        // Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
-        log.info((new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())).toString());
         try{
             Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
-            log.info("in login b");
         if (authenticate.isAuthenticated()) {
-            log.info("in login c");
-             return new  ResponseEntity<>(service.authResponseToken(authRequest.getUsername()),HttpStatus.ACCEPTED);
+             return new  ResponseEntity<String>(service.generateToken(authRequest.getUsername()),HttpStatus.ACCEPTED);
 
         } else {
             log.error("Invalid Access");
@@ -66,9 +61,8 @@ public class AuthController {
     }
 
     @GetMapping("/validate")
-    public String validateToken(@RequestHeader(name = "Authorization" ) String tokenDup) {
+    public Boolean validateToken(@RequestHeader(name = "Authorization" ) String tokenDup) {
         String token= tokenDup.substring(7);
-        service.validateToken(token);
-        return "Token is valid";
+        return  service.validateToken(token);
     }
 }

@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/healthcare_appointment_booking
     username: root
-    password: examly
+    password: system
   jpa:
     hibernate:
       ddl-auto: update
