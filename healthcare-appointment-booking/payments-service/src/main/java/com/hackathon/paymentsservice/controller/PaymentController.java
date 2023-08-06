@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 import java.util.*;
 
+import com.hackathon.paymentsservice.dto.AppointmentStatus;
 import com.hackathon.paymentsservice.entity.Payment;
 import com.hackathon.paymentsservice.entity.Status;
+import com.hackathon.paymentsservice.externalservices.AppointmentstatusExternal;
 import com.hackathon.paymentsservice.service.PaymentService;
 
 @RestController
@@ -22,6 +24,9 @@ import com.hackathon.paymentsservice.service.PaymentService;
 public class PaymentController {
     @Autowired
     PaymentService paymentService;
+    
+    @Autowired
+    AppointmentstatusExternal appointmentstatusExternal;
 
     @GetMapping("/hello")
     public String hello(){
@@ -33,6 +38,7 @@ public class PaymentController {
         payment.setTimestamp(LocalDateTime.now());
         payment.setStatus(Status.PAID);
         Payment payment1=paymentService.savePayment(payment);
+        AppointmentStatus appointmentstatu= appointmentstatusExternal.changeCompletedStatus(payment.getAppointmentId());
         return new ResponseEntity<Payment>(payment1,HttpStatus.CREATED);
     }
     @GetMapping()
