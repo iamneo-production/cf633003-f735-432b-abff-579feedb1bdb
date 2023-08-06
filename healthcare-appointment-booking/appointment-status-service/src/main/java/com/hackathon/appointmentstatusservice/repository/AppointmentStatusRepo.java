@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.hackathon.appointmentstatusservice.entity.AppointmentStatus;
 import com.hackathon.appointmentstatusservice.entity.Status;
 
+
 @Repository
 public interface AppointmentStatusRepo extends JpaRepository<AppointmentStatus,Integer> {
 
@@ -19,5 +20,7 @@ public interface AppointmentStatusRepo extends JpaRepository<AppointmentStatus,I
 	Optional<List<AppointmentStatus>> findAllByPatientId(Integer patientId);
 
 	Optional<List<AppointmentStatus>> findAllByStatus(Status available);
+	
+	Optional<AppointmentStatus> findByPatientId(int patientId);
     
 }

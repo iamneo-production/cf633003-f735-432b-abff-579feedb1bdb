@@ -60,10 +60,23 @@ public class AppointmmentStatusService {
                 return appointmentStatus.get();
             }
             else {
-				throw new DataNotFoundException("PatiId & ProviderId is Invalid");
+				throw new DataNotFoundException("PatientId & ProviderId is Invalid");
 			}
         }
 		throw new DataNotFoundException("PatientId & ProviderId is Invalid");
-
 	}
+    
+    public AppointmentStatus getById(int id) {
+    	Optional<AppointmentStatus> o=appointmentStatusRepo.findById(id);
+    	if(o.isPresent()) {
+    		return o.get();
+    	}
+    	throw new  DataNotFoundException("Appointment Id Not Found");
+    }
+    public AppointmentStatus changeCompletedStatus(Integer id) {
+    	AppointmentStatus appointmentStatus = this.getById(id);
+    	appointmentStatus.setStatus(Status.COMPLETED);
+    	return appointmentStatusRepo.save(appointmentStatus);
+   }
+    
 }
