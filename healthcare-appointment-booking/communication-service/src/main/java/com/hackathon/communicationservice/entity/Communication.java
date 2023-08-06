@@ -25,41 +25,4 @@ public class Communication {
     private int patientId;
     private int healthcareProviderId;
     private int appointmentId;
-	public int getCommunicationId() {
-		return communicationId;
-	}
-	public void setCommunicationId(int communicationId) {
-		this.communicationId = communicationId;
-	}
-	public int getPatientId() {
-		return patientId;
-	}
-	public void setPatientId(int patientId) {
-		this.patientId = patientId;
-	}
-	public int getHealthcareProviderId() {
-		return healthcareProviderId;
-	}
-	public void setHealthcareProviderId(int healthcareProviderId) {
-		this.healthcareProviderId = healthcareProviderId;
-	}
-	public int getAppointmentId() {
-		return appointmentId;
-	}
-	public void setAppointmentId(int appointmentId) {
-		this.appointmentId = appointmentId;
-	}
-	public Communication(int communicationId, int patientId, int healthcareProviderId, int appointmentId) {
-		super();
-		this.communicationId = communicationId;
-		this.patientId = patientId;
-		this.healthcareProviderId = healthcareProviderId;
-		this.appointmentId = appointmentId;
-	}
-	public Communication() {}
-	@Override
-	public String toString() {
-		return "Communication [communicationId=" + communicationId + ", patientId=" + patientId
-				+ ", healthcareProviderId=" + healthcareProviderId + ", appointmentId=" + appointmentId + "]";
-	}
 }
