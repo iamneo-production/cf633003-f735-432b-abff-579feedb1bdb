@@ -1,6 +1,8 @@
 package com.hackathon.appointmentstatusservice.entity;
 
-import java.time.LocalDate;
+
+
+import java.sql.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +30,7 @@ public class AppointmentStatus {
     private int appointmentId;
     private int patientId;
     private int providerId;
-    private LocalDate date;
+    private Date date;
     private String time;
     private Status status;
 	public int getAppointmentId() {
@@ -49,10 +51,10 @@ public class AppointmentStatus {
 	public void setProviderId(int providerId) {
 		this.providerId = providerId;
 	}
-	public LocalDate getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(LocalDate date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public String getTime() {
@@ -67,7 +69,7 @@ public class AppointmentStatus {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	public AppointmentStatus(int appointmentId, int patientId, int providerId, LocalDate date, String time,
+	public AppointmentStatus(int appointmentId, int patientId, int providerId, Date date, String time,
 			Status status) {
 		super();
 		this.appointmentId = appointmentId;
@@ -90,7 +92,7 @@ public class AppointmentStatus {
         private int appointmentId;
         private int patientId;
         private int providerId;
-        private LocalDate date;
+        private Date date;
         private String time;
         private Status status;
 
@@ -113,7 +115,7 @@ public class AppointmentStatus {
             return this;
         }
 
-        public Builder date(LocalDate date) {
+        public Builder date(Date date) {
             this.date = date;
             return this;
         }
@@ -139,6 +141,4 @@ public class AppointmentStatus {
             return appointmentStatus;
         }
     }
-
-    
 }

@@ -1,11 +1,11 @@
 package com.hackathon.appointmentschedularservice.dto;
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class AppointmentStatus {
     private int appointmentId;
     private int patientId;
     private int providerId;
-    private LocalDate date;
+    private Date date;
     private String time;
     private Status status;
     
@@ -13,7 +13,7 @@ public class AppointmentStatus {
     public AppointmentStatus() {
     }
     
-    public AppointmentStatus(int appointmentId, int patientId, int providerId, LocalDate date, String time, Status status) {
+    public AppointmentStatus(int appointmentId, int patientId, int providerId, Date date, String time, Status status) {
         this.appointmentId = appointmentId;
         this.patientId = patientId;
         this.providerId = providerId;
@@ -47,11 +47,11 @@ public class AppointmentStatus {
         this.providerId = providerId;
     }
     
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
     
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
     
@@ -71,11 +71,5 @@ public class AppointmentStatus {
         this.status = status;
     }
     
-    // Enum for Status
-    public enum Status {
-        SCHEDULED,
-        CANCELED,
-        COMPLETED
-        // Add more status if needed
-    }
+   
 }

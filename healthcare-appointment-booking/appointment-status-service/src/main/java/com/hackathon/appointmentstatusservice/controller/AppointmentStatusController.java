@@ -1,6 +1,8 @@
 package com.hackathon.appointmentstatusservice.controller;
 
-import java.time.LocalDate;
+
+import java.sql.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hackathon.appointmentstatusservice.entity.AppointmentStatus;
 import com.hackathon.appointmentstatusservice.service.AppointmmentStatusService;
+
+
 
 @RestController
 @RequestMapping("/appointments")
@@ -36,7 +40,15 @@ public class AppointmentStatusController {
     }
 
     @PostMapping("/{date}/{time}")
-    public AppointmentStatus getAppointmentStatusByDateTime(@PathVariable LocalDate date,@PathVariable String time){
+    public List<AppointmentStatus> getAppointmentStatusByDateTime(@PathVariable Date date,@PathVariable String time){
         return appointmmentStatusService.getAppointmentStatusByDateTime(date,time);
+    }
+    @PostMapping("/status/{date}/{time}")
+    public List<AppointmentStatus> getAppointmentStatusByDateTime1(@PathVariable Date date,@PathVariable String time){
+        return appointmmentStatusService.getAppointmentStatusByDateTime(date,time);
+    }
+    @GetMapping("/getappointment/{patientId}/{healthcareProiderId}")
+    public AppointmentStatus getAppoitmentByIds(@PathVariable Integer patientId,@PathVariable Integer healthcareProiderId){
+        return appointmmentStatusService.getAppointmentByIds(patientId,healthcareProiderId);
     }
 }

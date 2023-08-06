@@ -1,6 +1,7 @@
 package com.hackathon.appointmentschedularservice.dto;
+import java.sql.Date;
 
-import java.time.LocalDate;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,13 +15,13 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Date {
-    private LocalDate date;
+public class Date1 {
+    private Date date;
     private String time;
-	public LocalDate getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(LocalDate date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public String getTime() {
@@ -29,12 +30,12 @@ public class Date {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public Date(LocalDate date, String time) {
+	public Date1(Date date, String time) {
 		super();
 		this.date = date;
 		this.time = time;
 	}
-	public Date() {}
+	public Date1() {}
 	@Override
 	public String toString() {
 		return "Date [date=" + date + ", time=" + time + "]";

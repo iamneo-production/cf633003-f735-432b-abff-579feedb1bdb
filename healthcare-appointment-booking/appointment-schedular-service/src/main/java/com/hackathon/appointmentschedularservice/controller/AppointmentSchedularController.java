@@ -1,5 +1,7 @@
 package com.hackathon.appointmentschedularservice.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -7,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hackathon.appointmentschedularservice.dto.AppointmentStatus;
-import com.hackathon.appointmentschedularservice.dto.Date;
+import com.hackathon.appointmentschedularservice.dto.Date1;
 import com.hackathon.appointmentschedularservice.externalservice.AppointmentstatusExternal;
 
 @RestController
@@ -17,9 +19,7 @@ public class AppointmentSchedularController {
     AppointmentstatusExternal appointmentstatusExternal;
 
     @PostMapping()
-    public AppointmentStatus appointmentBook(@RequestBody Date date){
-        System.out.println(date);
-        
+    public List<AppointmentStatus> appointmentBook(@RequestBody Date1 date){   
        return appointmentstatusExternal.getAppointmentStatus(date.getDate(),date.getTime());
     }
 
