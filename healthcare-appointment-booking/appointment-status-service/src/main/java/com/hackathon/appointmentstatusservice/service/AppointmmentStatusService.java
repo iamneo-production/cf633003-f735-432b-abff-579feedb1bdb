@@ -64,6 +64,5 @@ public class AppointmmentStatusService {
 			}
         }
 		throw new DataNotFoundException("PatientId & ProviderId is Invalid");
-
 	}
 }
