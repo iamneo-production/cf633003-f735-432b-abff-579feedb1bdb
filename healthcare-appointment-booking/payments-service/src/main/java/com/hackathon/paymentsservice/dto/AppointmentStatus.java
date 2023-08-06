@@ -1,4 +1,4 @@
-package com.hackathon.communicationservice.dto;
+package com.hackathon.paymentsservice.dto;
 import java.sql.Date;
 
 public class AppointmentStatus {

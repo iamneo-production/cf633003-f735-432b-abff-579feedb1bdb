@@ -51,4 +51,9 @@ public class AppointmentStatusController {
     public AppointmentStatus getAppoitmentByIds(@PathVariable Integer patientId,@PathVariable Integer healthcareProiderId){
         return appointmmentStatusService.getAppointmentByIds(patientId,healthcareProiderId);
     }
+    
+    @GetMapping("/changeStatusCompleted/{id}")
+    public AppointmentStatus changeCompletedStatus(@PathVariable int id) {
+    	return appointmmentStatusService.changeCompletedStatus(id);
+    }
 }
