@@ -1,7 +1,7 @@
-package com.hackathon.userauthenticationservice.exception;
+package com.hackathon.paymentsservice.exception;
 
 public class DataNotFoundException extends RuntimeException {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	public DataNotFoundException(String str) {

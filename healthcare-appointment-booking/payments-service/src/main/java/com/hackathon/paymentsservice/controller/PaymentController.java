@@ -16,6 +16,7 @@ import java.util.*;
 import com.hackathon.paymentsservice.dto.AppointmentStatus;
 import com.hackathon.paymentsservice.entity.Payment;
 import com.hackathon.paymentsservice.entity.Status;
+import com.hackathon.paymentsservice.exception.DataNotFoundException;
 import com.hackathon.paymentsservice.externalservices.AppointmentstatusExternal;
 import com.hackathon.paymentsservice.service.PaymentService;
 
@@ -39,7 +40,9 @@ public class PaymentController {
         payment.setStatus(Status.PAID);
         Payment payment1=paymentService.savePayment(payment);
         AppointmentStatus appointmentstatu= appointmentstatusExternal.changeCompletedStatus(payment.getAppointmentId());
-        return new ResponseEntity<Payment>(payment1,HttpStatus.CREATED);
+        if(payment.getPatientId()==appointmentstatu.getPatientId()&&payment.getAppointmentId()==appointmentstatu.getAppointmentId())
+        	return new ResponseEntity<Payment>(payment1,HttpStatus.CREATED);
+        throw new DataNotFoundException("Wrong AppointmentId or PatientId");
     }
     @GetMapping()
     public ResponseEntity<List<Payment>> getAll1(){

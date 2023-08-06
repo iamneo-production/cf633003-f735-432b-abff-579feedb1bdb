@@ -7,16 +7,16 @@ spring:
   cloud:
     gateway:
       routes:
-      - id: Appointment-Scheduler-Service
+      - id: Appointment-Schedular-Service
         predicates:
         - Path= /appointments
-        uri: lb://Appointment-Scheduler-Service
+        uri: lb://Appointment-Schedular-Service
         filters:
            - AuthenticationFilter
            
       - id: Appointment-Status-Service
         predicates:
-        - Path=  /appointments/home,/appointments/save,/appointments/{date}/{time},/appointments/{id},appointments/getappointment/{patientId}/{healtcareProvideId}
+        - Path=  /appointments/**
         uri: lb://Appointment-Status-Service
         filters:
            - AuthenticationFilter

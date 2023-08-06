@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hackathon.appointmentstatusservice.entity.AppointmentStatus;
 import com.hackathon.appointmentstatusservice.service.AppointmmentStatusService;
 
-
-
 @RestController
 @RequestMapping("/appointments")
 public class AppointmentStatusController {
@@ -28,10 +26,10 @@ public class AppointmentStatusController {
     public String home(){
         return "Home";
     }
-
+    
     @GetMapping("/{id}")
     public AppointmentStatus getAppointmentStatus(@PathVariable int id){
-        return appointmmentStatusService.getAppointmentStatus(id);
+        return appointmmentStatusService.getById(id);
     }
 
     @PostMapping("/save")
@@ -43,10 +41,14 @@ public class AppointmentStatusController {
     public List<AppointmentStatus> getAppointmentStatusByDateTime(@PathVariable Date date,@PathVariable String time){
         return appointmmentStatusService.getAppointmentStatusByDateTime(date,time);
     }
+    
+    
     @PostMapping("/status/{date}/{time}")
     public List<AppointmentStatus> getAppointmentStatusByDateTime1(@PathVariable Date date,@PathVariable String time){
         return appointmmentStatusService.getAppointmentStatusByDateTime(date,time);
     }
+    
+    
     @GetMapping("/getappointment/{patientId}/{healthcareProiderId}")
     public AppointmentStatus getAppoitmentByIds(@PathVariable Integer patientId,@PathVariable Integer healthcareProiderId){
         return appointmmentStatusService.getAppointmentByIds(patientId,healthcareProiderId);

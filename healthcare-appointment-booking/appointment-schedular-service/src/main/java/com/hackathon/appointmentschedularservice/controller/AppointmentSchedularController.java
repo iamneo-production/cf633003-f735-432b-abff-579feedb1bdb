@@ -12,6 +12,8 @@ import com.hackathon.appointmentschedularservice.dto.AppointmentStatus;
 import com.hackathon.appointmentschedularservice.dto.Date1;
 import com.hackathon.appointmentschedularservice.externalservice.AppointmentstatusExternal;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
 @RestController
 @RequestMapping("/appointments")
 public class AppointmentSchedularController {
@@ -19,9 +21,14 @@ public class AppointmentSchedularController {
     AppointmentstatusExternal appointmentstatusExternal;
 
     @PostMapping()
+	@CircuitBreaker(name="appointmentBookNotFound",fallbackMethod = "appointmentBookNotAvailable")
     public List<AppointmentStatus> appointmentBook(@RequestBody Date1 date){   
        return appointmentstatusExternal.getAppointmentStatus(date.getDate(),date.getTime());
     }
+	
+	public String appointmentBookNotAvailable(@RequestBody Date1 date, Exception e)  {
+		return "No Slot Is Available";
 
+	}
     
 }

@@ -9,7 +9,7 @@ public class AppointmentStatus {
     private String time;
     private Status status;
     
-    // Constructors
+
     public AppointmentStatus() {
     }
     
@@ -22,7 +22,7 @@ public class AppointmentStatus {
         this.status = status;
     }
     
-    // Getters and Setters
+   
     public int getAppointmentId() {
         return appointmentId;
     }

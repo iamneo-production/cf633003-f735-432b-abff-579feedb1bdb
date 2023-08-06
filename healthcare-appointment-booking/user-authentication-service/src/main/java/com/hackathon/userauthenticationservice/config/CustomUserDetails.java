@@ -9,7 +9,9 @@ import java.util.Collection;
 
 public class CustomUserDetails implements UserDetails {
 
-    private String username;
+   
+	private static final long serialVersionUID = 1L;
+	private String username;
     private String password;
 
     public CustomUserDetails(UserCredential userCredential) {

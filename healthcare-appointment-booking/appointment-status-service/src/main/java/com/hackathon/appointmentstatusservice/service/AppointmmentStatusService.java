@@ -24,10 +24,6 @@ public class AppointmmentStatusService {
         return appointmentStatusRepo.save(appointmentStatus);
     }
 
-    public AppointmentStatus getAppointmentStatus(Integer id) {
-        return appointmentStatusRepo.findById(id).get();
-    }
-
     public List<AppointmentStatus> getAppointmentStatusByDateTime(Date date, String time){
         Optional<List<AppointmentStatus>> appointList = appointmentStatusRepo.findAllByDate(date);
         Optional<AppointmentStatus> appointmentStatus;
@@ -41,8 +37,7 @@ public class AppointmmentStatusService {
 	                return appointmentStatusList;
 	            } 	
             } 
-         }
-            
+         }    
         Optional<List<AppointmentStatus>> availbaleAppointment = appointmentStatusRepo.findAllByStatus(Status.AVAILABLE);
         if (availbaleAppointment.isPresent()) {
         	if(!availbaleAppointment.get().isEmpty()) {
